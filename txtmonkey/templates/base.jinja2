@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal">
+<head>
+  <title>The Pyramid Web Application Development Framework</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <meta name="keywords" content="python web application" />
+  <meta name="description" content="pyramid web application" />
+  <link rel="shortcut icon" href="${request.static_url('txtmonkey:static/favicon.ico')}" />
+  <link rel="stylesheet" href="${request.static_url('txtmonkey:static/css/bootstrap.css')}" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="http://static.pylonsproject.org/fonts/nobile/stylesheet.css" media="screen" />
+  <script src="${request.static_url('txtmonkey:static/js/bootstrap.js')}"></script>
+  <link rel="stylesheet" href="http://static.pylonsproject.org/fonts/neuton/stylesheet.css" media="screen" />
+  <!--[if lte IE 6]>
+  <link rel="stylesheet" href="${request.static_url('txtmonkey:static/ie6.css')}" type="text/css" media="screen" charset="utf-8" />
+  <![endif]-->
+<style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+    </style>
+</head>
+<body>
+  <div class="container-narrow">
+
+      <div class="jumbotron">
+        <h1 align="center">TxtMnky @(0_0)@</h1>
+      </div>
+
+      <hr>
+
+      <div class="container">
+        <h1>Send surveys over txt message via twilio</h1>
+        <p class="lead">Get results wherever you are.</p>
+      </div>
+        <form action='{{url_for ("survey")}}' class="form-horizontal" id="send_survey" method="post">
+          <div class="control-group">
+            <label class="control-label" for="twilio_id">Twilio Account</label>
+            <div class="controls">
+              <input type="text" id="twilio_id" placeholder="twilio_id">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="number">Respondent cell phone</label>
+            <div class="controls">
+              <input type="password" id="respondent_number" placeholder="5555555555">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="question">Survey Question</label>
+            <div class="controls">
+              <input type="text" id="question" placeholder="question">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+              <button type="submit" class="btn">Send Survey</button>
+            </div>
+          </div>
+
+        </form>
+      <hr>
+
+      <div class="row-fluid marketing">
+        <div class="span6">
+          <h4>Subheading</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+          <h4>Subheading</h4>
+          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+          <h4>Subheading</h4>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+
+        <div class="span6">
+          <h4>Subheading</h4>
+          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+          <h4>Subheading</h4>
+          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+          <h4>Subheading</h4>
+          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="footer">
+        <p>&copy; Company 2013</p>
+      </div>
+
+    </div> <!-- /container -->
+
+
+</body>
+</html>
