@@ -1,6 +1,13 @@
 from pyramid.view import view_config
 
-import json
+from datetime import datetime, date, timedelta
+import time
+
+import txtmonkey.models import (session,
+                                Survey,
+                                SurveyRespondent,
+                                SurveyResponse,
+                                )
 
 import logging
 
@@ -42,7 +49,13 @@ def index(context, request):
 
 
     # --- db ---
+    now = datetime.now()
     # store the survey
+    with session.begin():
+        survey = Survey(twilio_owner_id = account_sid,
+                        question = question,
+                        creation_date = now)
+
     
     client = TwilioRestClient(account_sid, auth_token)
     message = client.sms.messages.create(body=question,
@@ -50,7 +63,6 @@ def index(context, request):
                                          from_=phone_from)
                                      
     request.session.flash('Survey was created successfully.')
-
-
-    url = request.route_url('survey_result') 
+        
+    url = request.route_url('survey_result', survey_id = survey_id) 
     return HTTPFound(location=url)

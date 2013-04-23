@@ -25,7 +25,7 @@ class Survey(Base):
     id = Column(Integer, primary_key = True)
     twilio_owner_id = Column(Integer, nullable=False)
     question = Column(String(140), nullable=False)
-    creation_date = Column(String(15), nullable=True)
+    creation_date = Column(DateTime, nullable=True)
 
     def __init__(self, id= None, twilio_owner_id  = None, question = None, creation_date = None):
     	self.id = id
@@ -42,7 +42,7 @@ class SurveyRespondent(Base):
     	self.respondent_number = respondent_number
     	self.survey_id = survey_id
 
-class SurveyResponses(Base):
+class SurveyResponse(Base):
     __tablename__ = "survey_responses"
     id = Column(Integer, primary_key = True)
     survey_id = Column(Integer, nullable=False)
