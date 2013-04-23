@@ -63,33 +63,34 @@
         <h1>Send surveys over txt message via twilio</h1>
         <p class="lead">Get results wherever you are.</p>
       </div>
-        <form  action= "{{request.route_url('survey_create')}}" class="form-horizontal" id="send_survey" method= "POST">
+        <form  action= "{{request.route_url('survey_create')}}" class="form-horizontal" id="send_survey"method= "POST">
+
           <div class="control-group">
             <label class="control-label" for="twilio_id">Twilio Account</label>
             <div class="controls">
-              <input type="text" id="twilio_id" placeholder="twilio_id">
+              <input type="text" name="twilio_id" placeholder="twilio_id">
             </div>
           </div>
 
           <div class="control-group">
             <label class="control-label" for="number">Respondent cell phone</label>
             <div class="controls">
-              <input type="password" id="respondent_number" placeholder="5555555555">
+              <input type="password" name="respondent_number" placeholder="5555555555">
             </div>
           </div>
+
           <div class="control-group">
             <label class="control-label" for="question">Survey Question</label>
             <div class="controls">
-              <input type="text" id="question" placeholder="question">
+              <input type="text" name="question" placeholder="question">
             </div>
           </div>
 
           <div class="control-group">
             <div class="controls">
-              <button type="submit" class="btn">Send Survey</button>
+              <input type="submit" class="btn"
             </div>
           </div>
-
         </form>
       <hr>
 
