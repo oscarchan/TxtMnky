@@ -60,39 +60,29 @@
       <hr>
 
       <div class="container">
-        <h1>Send surveys over txt message via twilio</h1>
-        <p class="lead">Get results wherever you are.</p>
+        <h1>Drumroll Please...</h1>
+        <p class="lead">Here are your results</p>
       </div>
-        <form  action= "{{request.route_url('survey_create')}}" class="form-horizontal" id="send_survey"method= "POST">
+        
+      <table>
+        <caption>...</caption>
+        <thead>
+          <tr>
+            <th>Respondent</th>
+            <th>Answer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for respondent in responses %}
+          <tr>
+            <td>{{respondent.respondent_id}}</td>
+            <td>{{respondent.answer}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
 
-          <div class="control-group">
-            <label class="control-label" for="twilio_id">Twilio Account</label>
-            <div class="controls">
-              <input type="text" name="twilio_id" placeholder="twilio_id">
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label" for="number">Respondent cell phone</label>
-            <div class="controls">
-              <input type="password" name="respondent_number" placeholder="5555555555">
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label" for="question">Survey Question</label>
-            <div class="controls">
-              <input type="text" name="question" placeholder="question">
-            </div>
-          </div>
-
-          <div class="control-group">
-            <div class="controls">
-              <input type="submit" class="btn"
-            </div>
-          </div>
-        </form>
-      <hr>
+     
 
       <div class="row-fluid marketing">
         <div class="span6">
