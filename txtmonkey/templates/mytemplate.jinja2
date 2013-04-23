@@ -63,7 +63,7 @@
         <h1>Send surveys over txt message via twilio</h1>
         <p class="lead">Get results wherever you are.</p>
       </div>
-        <form class="form-horizontal" id="send_survey">
+        <form  action= '{{url_for ("survey_create")}}' class="form-horizontal" id="send_survey" method= "POST">
           <div class="control-group">
             <label class="control-label" for="twilio_id">Twilio Account</label>
             <div class="controls">
