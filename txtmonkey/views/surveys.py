@@ -30,22 +30,27 @@ def index(context, request):
     twilio_id = request.params['twilio_id']
     respondent_numbers = request.params['respondent_number']
     question = request.params['question']
-    
-
-    # --- validation ---
-    if 10 < len(question) and len(question):
-        return {}
 
     account_sid = "AC7225c1d30d2cce103ea56289e3fc6ed8"
     auth_token  = "6efbc4e502a9672e69fddf93c981cbbe"
-    client = TwilioRestClient(account_sid, auth_token)
     phone_from = "+14155994769"
+    
+
+    # --- validation ---
+    if 10 < len(question) and len(question) > 140:
+        return { "error": "invalid question: len=%s" % len(question) }
+
+
+    # --- db ---
+    # store the survey
+    
+    client = TwilioRestClient(account_sid, auth_token)
     message = client.sms.messages.create(body=question,
                                          to="+14082561324",
                                          from_=phone_from)
                                      
-
-    message.sid
-    return {}
+    request.session.flash('Survey was created successfully.')
 
 
+    url = request.route_url('survey_result') 
+    return HTTPFound(location=url)
