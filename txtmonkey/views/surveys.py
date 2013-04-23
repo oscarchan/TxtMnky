@@ -33,13 +33,14 @@ def index(context, request):
     
 
     # --- validation ---
-
+    if 10 < len(question) and len(question):
+        return {}
 
     account_sid = "AC7225c1d30d2cce103ea56289e3fc6ed8"
     auth_token  = "6efbc4e502a9672e69fddf93c981cbbe"
     client = TwilioRestClient(account_sid, auth_token)
-    phone_from = "+4155994769"
-    message = client.sms.messages.create(body="Testing 123",
+    phone_from = "+14155994769"
+    message = client.sms.messages.create(body=question,
                                          to="+14082561324",
                                          from_=phone_from)
                                      
