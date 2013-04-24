@@ -19,6 +19,8 @@ session = scoped_session(sessionmaker(bind=ENGINE, autocommit = True, autoflush 
 Base = declarative_base()
 #Base.query = session.query_property()
 
+create_db()
+
 class Survey(Base):
     __tablename__ = "surveys"
     id = Column(Integer, primary_key = True)

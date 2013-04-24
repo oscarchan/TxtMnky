@@ -1,4 +1,5 @@
 from pyramid.view import view_config
+from pyramid.httpexceptions import HTTPFound
 
 from datetime import datetime, date, timedelta
 import time
@@ -75,7 +76,8 @@ def index(context, request):
                                      
     request.session.flash('Survey was created successfully.')
         
-    url = request.route_url('survey_result', survey_id = survey.id) 
+    url = request.route_url('survey_display', survey_id = survey.id) 
+
     return HTTPFound(location=url)
 
 def split_numbers(raw_numbers):
