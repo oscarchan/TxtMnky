@@ -48,7 +48,7 @@ class SurveyRespondent(Base):
         self.creation_date = creation_date
 
     def __str__(self):
-        return "Respondent[%s, sid=%s, created_at=%s]" % (self.respondent_number, self.survey_id)
+        return "Respondent[%s, sid=%s, created_at=%s]" % (self.respondent_number, self.survey_id, self.creation_date)
 
 class SurveyResponse(Base):
     __tablename__ = "survey_responses"
