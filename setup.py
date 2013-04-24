@@ -11,7 +11,10 @@ requires = [
     'pyramid_debugtoolbar',
     'waitress',
     'pyramid_jinja2',
-    'twilio'
+    'twilio',
+    'sqlalchemy'
+    'sqlite3',
+    'python-dateutil',
     ]
 
 setup(name='TxtMonkey',
