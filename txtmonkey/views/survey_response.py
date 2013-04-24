@@ -6,7 +6,7 @@ from txtmonkey.models import (session,
                                 )
 
 import json
-from txtmonkey.views.get_responses import get_messages, store_responses
+from txtmonkey.views.get_responses import get_messages, store_responses, convert_messages_to_responses
 import logging
 
 logger = logging.getLogger(__name__)
@@ -15,7 +15,9 @@ logger = logging.getLogger(__name__)
 def survey_display(context, request):
     survey_id=request.matchdict["survey_id"]
     messages=get_messages()
-    store_responses(survey_id, messages)
+    responses = convert_messages_to_responses(messages)
+    store_responses(responses)
+
     survey_results = session.query(SurveyResponse).filter(survey_id == survey_id).all()
     return {"survey_id" :survey_id, "responses": survey_results}
 

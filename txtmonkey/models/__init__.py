@@ -33,14 +33,22 @@ class Survey(Base):
     	self.question = question
         self.creation_date = creation_date
 
+    def __str__(self):
+        return "Survey[%s, owner=%s, created_at=%s, %s]" % (self.id, self.twilio_owner_id, self.creation_date, self.question)
+
 class SurveyRespondent(Base):
     __tablename__ = "survey_respondents"
     respondent_number = Column(String, primary_key = True) 
     survey_id = Column(Integer, nullable=False, primary_key = True)
-
-    def __init__(self, respondent_number= None, survey_id  = None):
+    creation_date = Column(DateTime, nullable=True)
+    
+    def __init__(self, respondent_number= None, survey_id  = None, creation_date = None):
     	self.respondent_number = respondent_number
     	self.survey_id = survey_id
+        self.creation_date = creation_date
+
+    def __str__(self):
+        return "Respondent[%s, sid=%s, created_at=%s]" % (self.respondent_number, self.survey_id)
 
 class SurveyResponse(Base):
     __tablename__ = "survey_responses"
@@ -48,7 +56,10 @@ class SurveyResponse(Base):
     survey_id = Column(Integer, nullable=False)
     respondent_number = Column(String, nullable=False)
     response = Column(String(140), nullable=False)
+    sms_id = Column(String(100), nullable=False)
 
+    def __str__(self):
+        return "Response[%s, sid=%s, number=%s, sms_id=%s, %s]" % (self.id, self.survey_id, self.respondent_number, sms_id, response)
     
 
 def create_db():

@@ -37,7 +37,7 @@ def index(context, request):
 
 
     respondent_numbers = split_numbers(request.params['respondent_number'])
-    question = request.params['question']
+    question = request.params['question_1']
 
     account_sid = "AC7225c1d30d2cce103ea56289e3fc6ed8"
     auth_token  = "6efbc4e502a9672e69fddf93c981cbbe"
@@ -68,9 +68,10 @@ def index(context, request):
 
         for number in respondent_numbers:
             respondent = SurveyRespondent(respondent_number = number, 
-                             survey_id = survey.id)
+                                          survey_id = survey.id, 
+                                          creation_date = now)
             session.add(respondent)
-    
+            
             message = client.sms.messages.create(body=question,
                                          to=number,
                                          from_=phone_from)
