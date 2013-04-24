@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal">
 <head>
-  <title>The Pyramid Web Application Development Framework</title>
+  <title>TxtMnky</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
   <meta name="keywords" content="python web application" />
   <meta name="description" content="pyramid web application" />
@@ -10,17 +10,16 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.js"></script>
   <script type="text/javascript"> 
   $(function() {  
-    var i=1;  
+    
         $('.icon-plus').live('click', function() {
-               {
-                if (i<3){
-                $('.control-group.hidden:first').removeClass("hidden");
-                i++;
-              }
-              }
+                $('.control-group.hidden:first').removeClass("hidden"); 
+                $(this).hide()
+                if ($('.control-group.hidden').size()==0){
+                  $('.icon-plus').hide();
+                }
                 return false;
-        });
-      
+
+        });   
   });
   </script>
 
@@ -66,23 +65,32 @@
         margin-top: 28px;
       }
       .hidden {display: none;}
-      
+      .brand {font-family:Arial, Helvetica, sans-serif;}
+      .controls textarea {width:360px;}
+       .controls input {width:360px;}
     </style>
 </head>
 <body>
+  
+    <div class="navbar"style= "color: #000000;">
+    <div class="container" style= "color: #000000;">
+      <div class="navbar-inner clearfix" style="height: 50px; padding:50px;" >
+        <a class="brand" href="/">
+          <span class= "logo-text" style="font-size:70px;color: #AABD00;"><strong>@(0_0)@ </strong></span>
+          <span class="logo-text" style= "font-size:80px; color: #FFFFFF;"> <strong> TxtMnky<strong></span>
+        </a>
+      </div>
+    </div>
+  </div>
   <div class="container-narrow">
-
-      <div class="jumbotron">
-        <h1 align="center">TxtMnky </h1>
-          <h1>@(0_0)@</h1>
-      </div>
-
+     
       <hr>
-
-      <div class="container">
-        <h1>Send Surveys Over txt Message</h1>
-        <p class="lead">Get results from all over the world.</p>
-      </div>
+      <div class="hero-unit">
+      
+        <h1 align="center">Send Surveys Over Text Message</h1>
+        <p align="center"class="lead">Get Results From All Over the World.</p>
+      
+      
         <form  action= "{{request.route_url('survey_create')}}" class="form-horizontal" id="send_survey"method= "POST">
 
           <div class="control-group">
@@ -91,18 +99,19 @@
               <textarea rows="3" name="respondent_number" placeholder="5555555555, 3333333333"></textarea> 
             </div>
           </div>
-
           <div class="control-group">
             <label class="control-label" for="question">Survey Question 1</label>
             <div class="controls">
-              <input type="text" name="question_1" placeholder="question">
+              <input type="text" name="question_1" placeholder="How many vaccines do you need?">
+                <i class="icon-plus" style="text-align:center;"></i>  
             </div>
           </div>
 
            <div class="control-group hidden">
             <label class="control-label" for="question">Survey Question 2</label>
             <div class="controls">
-              <input type="text" name="question_2" placeholder="question">
+              <input type="text" name="question_2" placeholder="How many people need medical aid?">
+               <i class="icon-plus" style="text-align:center;"></i> 
             </div>
           </div>
 
@@ -110,9 +119,9 @@
             <label class="control-label" for="question">Survey Question 3</label>
             <div class="controls">
               <input type="text" name="question_3" placeholder="question">
+               <i class="icon-plus" style="text-align:center;"></i> 
             </div>
           </div>
-           <i class="icon-plus" style="text-align:center;"></i> 
             <div class="control-group">
             <div class="controls">
               <input type="submit" class="btn">
@@ -121,36 +130,35 @@
 
          
         </form>
-      <hr>
-
+      </div>
       <div class="row-fluid marketing">
         <div class="span6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+          <h4>Track Surveys</h4>
+          <p>Track phone numbers of people who response to your surveys.</p>
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+          <h4>Send Multiple Questions</h4>
+          <p> Send easy to anwser questions. Sends one at a time after receiving a response.</p>
 
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+          <h4>Send to Multiple Phone Numbers</h4>
+          <p>send surveys to as many people as you need.</p>
         </div>
 
         <div class="span6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+          <h4>International Surveys</h4>
+          <p>It hard to reach remote around that do not have internet. </p>
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+          <h4>Custumer Satisfaction </h4>
+          <p>Send text surveys that are simple to use and response. Check to see custumer Satisfaction</p>
 
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+          <h4>Reach More People, Everywhere</h4>
+          <p>Can be used by smartphone and non-smartphone users with or without apps or internet access</p>
         </div>
       </div>
 
       <hr>
 
       <div class="footer">
-        <p>&copy; Company 2013</p>
+        <p>&copy; TxtMnky 2013</p>
       </div>
 
     </div> <!-- /container -->
