@@ -19,7 +19,6 @@ session = scoped_session(sessionmaker(bind=ENGINE, autocommit = True, autoflush 
 Base = declarative_base()
 #Base.query = session.query_property()
 
-create_db()
 
 class Survey(Base):
     __tablename__ = "surveys"
@@ -54,6 +53,8 @@ class SurveyResponse(Base):
 
 def create_db():
     Base.metadata.create_all(ENGINE)
+
+create_db()
 
 def main():
    pass
