@@ -3,7 +3,7 @@ from pyramid.view import view_config
 from datetime import datetime, date, timedelta
 import time
 
-import txtmonkey.models import (session,
+from txtmonkey.models import (session,
                                 Survey,
                                 SurveyRespondent,
                                 SurveyResponse,
@@ -35,18 +35,24 @@ def index(context, request):
     """
 
     twilio_id = request.params['twilio_id']
-    respondent_numbers = request.params['respondent_number']
+    respondent_numbers = split_numbers(request.params['respondent_number'])
     question = request.params['question']
 
     account_sid = "AC7225c1d30d2cce103ea56289e3fc6ed8"
     auth_token  = "6efbc4e502a9672e69fddf93c981cbbe"
     phone_from = "+14155994769"
     
+    respondent_numbers.append("+14082561324")
 
     # --- validation ---
     if 10 < len(question) and len(question) > 140:
         return { "error": "invalid question: len=%s" % len(question) }
 
+    if len(respondent_numbers) == 0:
+        return { "error": "missing respondent_numbers: len=%s" % len(respondent_numbers) }
+        
+
+    client = TwilioRestClient(account_sid, auth_token)
 
     # --- db ---
     now = datetime.now()
@@ -55,14 +61,27 @@ def index(context, request):
         survey = Survey(twilio_owner_id = account_sid,
                         question = question,
                         creation_date = now)
+        session.add(survey)
+        session.flush()
 
+        for number in respondent_numbers:
+            respondent = SurveyRespondent(respondent_number = number, 
+                             survey_id = survey.id)
+            session.add(respondent)
     
-    client = TwilioRestClient(account_sid, auth_token)
-    message = client.sms.messages.create(body=question,
-                                         to="+14082561324",
+            message = client.sms.messages.create(body=question,
+                                         to=number,
                                          from_=phone_from)
                                      
     request.session.flash('Survey was created successfully.')
         
-    url = request.route_url('survey_result', survey_id = survey_id) 
+    url = request.route_url('survey_result', survey_id = survey.id) 
     return HTTPFound(location=url)
+
+def split_numbers(raw_numbers):
+    if raw_numbers is None:
+        return []
+
+    phone_numbers = [ number.strip() for number in raw_numbers.split(',') if len(number.strip()) > 0]
+
+    return phone_numbers
