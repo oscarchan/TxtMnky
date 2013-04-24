@@ -21,9 +21,8 @@ def get_messages():
 	messages = client.sms.messages.list(to = "+14155994769")
 	return messages
 
-def store_responses(responses, survey_id):
+def store_responses(survey_id,responses):
 	for response in responses:
 		new_response =SurveyResponse(survey_id = survey_id, respondent_number = response.from_, response=response.body)
     	session.add(new_response)
     	session.flush()
-

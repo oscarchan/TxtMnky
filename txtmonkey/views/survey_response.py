@@ -15,9 +15,7 @@ logger = logging.getLogger(__name__)
 def survey_display(context, request):
     survey_id=request.matchdict["survey_id"]
     messages=get_messages()
-    store_responses(messages, survey_id)
+    store_responses(survey_id, messages)
     survey_results = session.query(SurveyResponse).filter(survey_id == survey_id).all()
-    import pdb
-    pdb.set_trace()
-    return survey_results
+    return {"survey_id" :survey_id, "responses": survey_results}
 
