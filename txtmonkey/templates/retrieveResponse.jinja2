@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal">
 <head>
-  <title>The Pyramid Web Application Development Framework</title>
+  <title>TxtMnky</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
   <meta name="keywords" content="python web application" />
   <meta name="description" content="pyramid web application" />
@@ -48,20 +48,29 @@
       .marketing p + h4 {
         margin-top: 28px;
       }
+      .brand {font-family:Arial, Helvetica, sans-serif;}
     </style>
 </head>
 <body>
+      <div class="navbar"style= "color: #000000;">
+    <div class="container" style= "color: #000000;">
+      <div class="navbar-inner clearfix" style="height: 50px; padding:50px;" >
+        <a class="brand" href="/">
+          <span class= "logo-text" style="font-size:70px;color: #AABD00;"><strong>@(0_0)@ </strong></span>
+          <span class="logo-text" style= "font-size:80px; color: #FFFFFF;"> <strong> TxtMnky<strong></span>
+        </a>
+      </div>
+    </div>
+  </div>
   <div class="container-narrow">
 
-      <div class="jumbotron">
-        <h1 align="center">TxtMnky @(0_0)@</h1>
-      </div>
-
       <hr>
-
-      <div class="container">
+       <div class="hero-unit">
+      
+      <div style= "padding:0px 0px 10px 0px;"class="container">
         <h1>Drumroll Please ...</h1>
-        <p class="lead">Here are your results</p>
+        <p>Here are your results for the question:</p>
+      <p> <strong>Q: {{question}} </strong> </p>
       </div>
         
       <table class="table table-bordered">
@@ -80,37 +89,33 @@
           {% endfor %}
         </tbody>
       </table>
+       </div>
+      
 
-     
-
-      <div class="row-fluid marketing">
+   <div class="row-fluid marketing">
         <div class="span6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+          <h4>Track Respondents</h4>
+          <p>Track phone numbers of people who response to your survey.</p>
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+          <h4>Unlimited Responses </h4>
+          <p>Send a survey to as many people as you need.</p>
+        
         </div>
 
         <div class="span6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+          <h4>Reach More People, Everywhere</h4>
+          <p>Can reach anyone, anywhere on the planet, with an SMS-enabled device.</p>
+          <h4>Ease of Use</h4>
+          <p>TxtMnky Surveys are easy to make and easy to respond to.</p>
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+          
         </div>
       </div>
 
       <hr>
 
       <div class="footer">
-        <p>&copy; Company 2013</p>
+        <p>&copy; TxtMnky 2013</p>
       </div>
 
     </div> <!-- /container -->

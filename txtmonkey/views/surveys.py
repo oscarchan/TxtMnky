@@ -43,9 +43,6 @@ def index(context, request):
     auth_token  = "6efbc4e502a9672e69fddf93c981cbbe"
     phone_from = "+14155994769"
 
-    if respondent_numbers:
-        respondent_numbers.append("+14082561324")
-
     # --- validation ---
     if 10 < len(question) and len(question) > 140:
         return { "error": "invalid question: len=%s" % len(question) }
