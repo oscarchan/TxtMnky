@@ -27,7 +27,7 @@ sms_message_url = twilio_service_host + '/2010-04-01/Accounts/{AccountSid}/SMS/M
 '''
 logger = logging.getLogger(__name__)
 
-@view_config(route_name="survey_create", request_method='POST', renderer='templates/mytemplate.jinja2')
+@view_config(route_name="survey_create", request_method='POST', renderer='../templates/mytemplate.jinja2')
 def index(context, request):
     """
     an home page of survey length webap.

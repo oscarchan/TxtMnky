@@ -11,5 +11,5 @@ def includeme(config):
     add_route = config.add_route
 
     add_route('survey_create', '/surveys/create')
-
+    add_route('survey_display', '/survey/{survey_id}')
     config.scan('.')
