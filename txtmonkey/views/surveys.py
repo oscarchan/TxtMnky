@@ -35,7 +35,7 @@ def index(context, request):
     - provide a simple survey form for quick look up of survey
     """
 
-    twilio_id = request.params['twilio_id']
+
     respondent_numbers = split_numbers(request.params['respondent_number'])
     question = request.params['question']
 
