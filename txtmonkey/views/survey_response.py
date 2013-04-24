@@ -18,6 +18,6 @@ def survey_display(context, request):
     responses = convert_messages_to_responses(messages)
     store_responses(responses)
 
-    survey_results = session.query(SurveyResponse).filter(survey_id == survey_id).all()
+    survey_results = session.query(SurveyResponse).filter(SurveyResponse.survey_id == survey_id).all()
     return {"survey_id" :survey_id, "responses": survey_results}
 
